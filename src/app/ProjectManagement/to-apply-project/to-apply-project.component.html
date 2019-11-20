@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div [ngClass]="setClasses()">
+    <div class="row">
+      <div class="col">
+        {{ toapply.project_name }}
+      </div>
+
+      <div class="col">
+        {{ toapply.type }}
+      </div>
+
+      <div class="col">
+        {{ toapply.start_date }}
+      </div>
+
+      <div class="col" class="del" >
+        <button mat-stroked-button color="primary" (click)="openDialog()" style="margin: 2px">View more</button>
+        &nbsp;&nbsp;
+        <button mat-stroked-button color="primary" (click)="onEnroll()" *ngIf="!enrolle">enroll</button>
+        <button mat-stroked-button color="primary" (click)="onUnEnroll()" *ngIf="enrolle">unenroll</button>
+        <!-- <button (click)="onDelete(toapply)" class="del">enroll</button> -->
+      </div>
+
+    </div>
+
+  </div>
+</div>

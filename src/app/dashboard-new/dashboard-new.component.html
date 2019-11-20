@@ -1,0 +1,56 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" #sidenav class="sidenav" [opened]="screenWidth > 840" [mode]="(screenWidth > 840)? 'side' : 'over'">
+
+    <div class="header">
+      <img src="../assets/img/akura_logo.png" class="logo" alt="">
+    </div>
+    
+
+    <div class='mybtn'>
+      <div><button mat-stroked-button (click)="(screenWidth > 840)? null : sidenav.close()" routerLink="schHeared" *ngIf="(tab=='admin')||(tab=='student') || (tab=='sponsor')">Scholarship</button></div>
+      <div><button mat-stroked-button (click)="(screenWidth > 840)? null : sidenav.close()" routerLink="projectHeared" *ngIf="(tab=='mentor')||(tab=='admin')||(tab=='coordinator')" >Project</button></div>
+      <div><button mat-stroked-button (click)="(screenWidth > 840)? null : sidenav.close()" routerLink="financeHeared" *ngIf="(tab=='admin')||(tab=='coordinator')">Manage Finance</button></div>
+      <div><button mat-stroked-button (click)="(screenWidth > 840)? null : sidenav.close()" routerLink="mentHeader">Mentoring</button></div>
+      <div><button mat-stroked-button (click)="(screenWidth > 840)? null : sidenav.close()" routerLink="enrollProject" *ngIf="(tab=='admin')||(tab=='student')">Apply Workshop</button></div>
+    {{message}}
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <mat-toolbar class="menubar">
+      <div [ngStyle]="{'display' : (screenWidth > 840) ? 'none' : 'block'}">
+        <button type="button" (click)="sidenav.open()"  class="btn btn-outline-dark">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <span class="welcome">
+        <h6><span>Dashboard</span> </h6>
+      </span>
+      <!-- This fills the remaining space of the current row -->
+      <span class="example-fill-remaining-space"></span>
+      <span class="notification"> 
+        <button mat-button [matMenuTriggerFor]="notification" (click)="onMark()"><i *ngIf="newNotifi" class="fas fa-bell"></i><i *ngIf="!newNotifi" class="far fa-bell"></i></button> 
+        <mat-menu #notification="matMenu" class="notifiMain">
+          <button mat-menu-item *ngFor="let notification of notifications" value="{{notification.data.type}}" (click)="onNotifiClick($event)">{{notification.data.msg}}</button>
+        </mat-menu>
+        
+      </span>
+
+      <span class="">
+        <button mat-button [matMenuTriggerFor]="menu"><img class="userimg" [src]="url ? url : '../../assets/img/img_avatar.png'"><small class="user">{{Username}}</small></button>
+        <!-- <i class="material-icons">person</i> -->
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)='onSetting()'>Setting</button>
+          <button mat-menu-item (click)='onProfile()'>Profile</button>
+          <button mat-menu-item (click)='logOut()'>Logout</button>
+        </mat-menu>
+      </span>
+      
+    </mat-toolbar>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>

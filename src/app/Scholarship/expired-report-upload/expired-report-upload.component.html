@@ -1,0 +1,22 @@
+<div class="alert alert-success" role="alert">
+  <div class="alert-heading row">
+    <h5 class="col">
+      <span style="text-align: left" (click)="onDetails()" class="pointer">
+        {{student.fname}}
+      </span>
+    </h5>
+
+    <div class="col">
+      <input type="button" value="View" (click)="onView()" class="btn btn-light float-right">
+    </div>
+  </div>
+  <hr>
+
+  <p>Who is
+    <span *ngIf="student.registrationType=='universityStudent'">University student, level {{applier.level}} semester
+      {{applier.semester}}</span>
+    <span *ngIf="student.registrationType=='schoolStudent'">School student, year {{applier.grade}} term
+      {{applier.term}}</span>
+    progress report not yet uploaded</p>
+
+</div>

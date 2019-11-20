@@ -1,0 +1,61 @@
+<div>
+
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close><i class="fas fa-times" style="color: red"></i></button>
+  </mat-dialog-actions>
+
+  <div class="row container">
+    <img [src]="url ? url : '../../assets/img/img_avatar.png'">
+  </div>
+
+  <br><br><br>
+  <hr>
+  <br>
+
+  <div class="half-center">
+    <div class="row">
+      <h6>Name: </h6> &nbsp; {{user.fname}} {{user.mname}} {{user.sname}}
+    </div>
+
+    <div class="row">
+      <h6>Date of Birth: </h6> &nbsp; {{user.dob}}
+    </div>
+
+    <div class="row">
+      <h6>Contact Number: </h6> &nbsp; {{user.cnumber}}
+    </div>
+
+    <div class="row">
+      <h6>Email: </h6> &nbsp; {{user.email}}
+    </div>
+
+    <div class="row">
+      <h6>Gender: </h6> &nbsp; {{user.gender}}
+    </div>
+
+    <div class="row">
+      <h6>Position: </h6> &nbsp; {{user.position}}
+    </div>
+
+    <div class="row">
+      <h6>Address: </h6>
+      &nbsp; {{user.no}},
+      &nbsp; {{user.street}},
+      &nbsp; {{user.city}}
+    </div>
+
+    <div class="row" *ngIf="user.occupation!=null">
+      <h6>Occupation: </h6> &nbsp; {{user.occupation}}
+    </div>
+
+    <div class="row" *ngIf="user.medium!=null">
+      <h6>Medium: </h6> &nbsp; {{user.medium}}
+    </div>
+
+    <div class="row" *ngIf="user.subject!=null">
+      <h6>Subject: </h6> &nbsp; {{user.subject}}
+    </div>
+
+  </div>
+
+</div>

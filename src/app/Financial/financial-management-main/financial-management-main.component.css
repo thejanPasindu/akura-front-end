@@ -1,0 +1,13 @@
+.container{
+    align-content: center;
+    height: auto;
+    margin-top: 3%;
+    margin-bottom: auto;
+    padding: 15px;
+    width: 50%;
+    background-color: rgba(226, 219, 233, 0.7) !important;
+}
+
+.container_small{
+    width: 50%;
+}

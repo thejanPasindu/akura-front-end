@@ -1,0 +1,146 @@
+<div>
+    <div class="alert alert-success">
+        <div style="margin:10px;">
+            <!--title-->
+            <h2>Add Income</h2>
+            
+            <form #gen="ngForm">
+
+                <!--input student name-->
+                <div class="form-group container_small" *ngIf="!userType">
+                    <mat-form-field class="userinput">
+                        <mat-label>User</mat-label>
+                        <mat-select [formControl]="option" multiple>
+                            <mat-option class="matoption" *ngFor="let option of optionList" [value]="option">{{option}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="option.hasError('required')">User is required</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!--input sponsor name-->
+                <div class="form-group container_small" *ngIf="!userType">
+                    <mat-form-field class="sponsorinput">
+                        <mat-label>Sponsor</mat-label>
+                        <mat-select [formControl]="sponsor">
+                            <mat-option class="matoption" *ngFor="let sponsor of sponsorList" [value]="sponsor">
+                                {{sponsor}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <!--input amount-->
+                <div class="amount-input">
+                    <mat-form-field class="input-amount">
+                        <mat-label>Amount</mat-label>
+                        <input autocomplete="off" matInput placeholder="0000.00" 
+                             name="amount" [(ngModel)]="amount">
+                        <!-- <mat-error *ngIf="amountFormControl.hasError('required') && amountFormControl.touched">Amount is
+                            Required</mat-error>
+                        <mat-error
+                            *ngIf="!amountFormControl.hasError('required') && amountFormControl.hasError('pattern')">
+                            Please enter value as currency
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+
+                <!--Date input-->
+                <div>
+                    <!--start date-->
+                    <mat-form-field class="startdate">
+                        <mat-label>Start Date</mat-label>
+                        <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+                            name="from" [(ngModel)]="fromDate" >
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker startView="year"></mat-datepicker>
+                        <!-- <mat-error *ngIf="startDateFormControl.hasError('required')">
+                            date is required
+                        </mat-error> -->
+                    </mat-form-field>
+
+                    <!--end date-->
+                    <mat-form-field class="enddate" *ngIf="userType">
+                        <mat-label>End Date</mat-label>
+                        <input [min]="fromDate" matInput [matDatepicker]="picker2" name="toDate"
+                            placeholder="Choose a date" [(ngModel)]="toDate" >
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2 startView="year"></mat-datepicker>
+                        <!-- <mat-error *ngIf="endDateFormControl.hasError('required')">
+                            End date is required
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <!--Description-->
+                <div class="form-group container_small">
+                    <mat-form-field class="discription">
+                        <mat-label>Description</mat-label>
+                        <textarea name="Dis" matInput placeholder="Enter Description" name="description"
+                            [(ngModel)]="description" rows="4" [(ngModel)]="description"
+                            ></textarea>
+                        <!-- <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                            Description is required
+                        </mat-error> -->
+                    </mat-form-field>
+                </div>
+
+                <!--image upload frame-->
+                <div class="image-upload-frame">
+                    <div *ngIf="imagePath" class="outerPreview">
+                        <div *ngIf="imagePath != null" class="image-close-btn">
+                            <mat-icon (click)="cancelImage()">remove</mat-icon>
+                        </div>
+                        <img class="outerPreview" [src]="imgURL" *ngIf="imgURL">
+                    </div>
+                    <div *ngIf="!imagePath" class="outerPreview2">
+                        <img class="outerPreview2" src="../../assets/img/default.jpg">
+                    </div>
+
+                    <br>
+                    <!--upload file-->
+                    <div class="form-group container_small">
+                        <button mat-raised-button style="width:200px;" (click)="file.click()">
+                            <mat-icon>add_photo_alternate</mat-icon><label style="color:rgb(92, 90, 90)"> Upload the
+                                Receipt</label>
+                        </button>
+                        <input #file style="display:none" type="file" accept='image/*' (change)="preview(file.files)">
+                        
+                    </div>
+
+                </div>
+                <br>
+                <!--loading spinner-->
+                <div>
+                    <mat-progress-spinner style="left:40%;" *ngIf="isLoading" mode="indeterminate">
+                    </mat-progress-spinner>
+                    
+                    <div *ngIf="successMsg" class="successmsg">
+                        Data has been inserted sucessfully
+
+                        <mat-icon aria-label="label">done</mat-icon>
+
+                    </div>
+
+                </div>
+
+                <div role="group" class="buttongroup" aria-label="First group">
+
+                    <!--submit button-->
+                    <button class="submitbutton" color="primary" mat-raised-button
+                        
+                        (click)='submitIncomeForm()'>Submit</button>
+                    <!--reset button-->
+                   <button  class="resetbutton" color="warn" mat-raised-button type="reset" value="Reset"> Reset
+                    </button>
+                </div>
+                <div role="group" aria-label="Second group">
+
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>

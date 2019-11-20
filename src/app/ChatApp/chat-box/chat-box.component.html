@@ -1,0 +1,19 @@
+<div>
+  <h5>{{receiver.name}}</h5>
+  <div class='container bg-light rounded  border' style="overflow: scroll; height: 450px;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+
+    
+    <app-chat-msg *ngFor="let chat of chats" [chat]='chat' [receiver]='receiver'></app-chat-msg>
+
+  </div>
+
+  <div class='container bg-light rounded border'>
+      <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Your message" name="message" [(ngModel)]='msg.message' (keyup.enter)="onSend()">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button" (click)='onSend()'><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+  </div>
+  
+</div>

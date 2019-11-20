@@ -1,0 +1,12 @@
+<div>
+  <div>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link routerLink="createproject" (click)="activeLink = links[0]"
+        [active]="activeLink ==links[0]">{{links[0]}}</a>
+      <!-- <a mat-tab-link routerLink="enrollProject" (click)="activeLink = links[1]"
+        [active]="activeLink ==links[1]">{{links[1]}}</a> -->
+    </nav>
+    <br>
+    <router-outlet></router-outlet>
+  </div>
+</div>

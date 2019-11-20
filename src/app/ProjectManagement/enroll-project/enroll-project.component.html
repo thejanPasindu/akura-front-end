@@ -1,0 +1,77 @@
+
+<div class="container">
+  
+  <h3>
+      Enroll Workshop/Seminar
+  </h3>
+  <br>
+  
+
+<form class="form-inline" >
+  <div class="row">
+
+    <div class="col">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Select</label>
+        </div>
+        <select name="district" class="form-control" [(ngModel)]="searchData.district"
+          #district="ngModel">
+          <option value="{{district.id}}" *ngFor="let district of districts">{{district.district}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupDate01">Date</label>
+        </div>
+        <input type="date" #startDate="ngModel" [class.is-invalid]="startDate.invalid && startDate.touched "
+          class="form-control" name="startDate" min="{{myDate | date:'yyyy-MM-dd'}}" ngModel [(ngModel)]="searchData.date">
+      </div>
+    </div>
+
+
+    <div>
+      <div class="form-group">
+        <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="show && show_" class="alert alert-primary">Not found any workshop or Seminar</div>
+
+</div>
+
+<div class="container">
+ 
+<form>
+  <div>
+    <!-- <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Project ID</th>
+          <th scope="col">Project Name</th>
+          <th scope="col">Date</th> 
+          <th scope="col">Participate?(Yes/No)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <app-to-applys></app-to-applys>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
+    <app-to-apply-project *ngFor = "let toapply of toapplys" [toapply] = "toapply" [enrolle] = "0">
+    </app-to-apply-project>
+    <hr>
+    <app-to-apply-project *ngFor = "let toapply of applied" [toapply] = "toapply" [enrolle]= "1">
+    </app-to-apply-project>
+  </div>
+</form>
+</div>

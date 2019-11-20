@@ -1,0 +1,16 @@
+img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border-color: black;
+    border: solid;
+}
+.container{
+    position: absolute;
+    left: 48%;
+    margin-left: -50px;
+}
+
+.half-center{
+    margin-left: 10%;
+}

@@ -1,0 +1,76 @@
+<div class="container">
+	<div class="d-flex justify-content-center">
+		<div class="card">
+
+			<div class="card-header">
+				<img src="../../assets/img/akura_logo.png" alt="">
+				<h3>Sign In</h3>
+			</div>
+
+			<div class="card-body">
+				<div *ngIf='msgShow' class="msg">
+					Invalid Username or Password
+					<br>
+				</div>
+				<br>
+				<form>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+						</div>
+						<input type="text" class="form-control" placeholder="Email" name="email" required
+							[(ngModel)]="loginModel.email" (click)='onClear()'>
+					</div>
+
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" placeholder="password" name="password" required
+							[(ngModel)]="loginModel.password">
+					</div>
+
+					<div class="row align-items-center remember">
+						<input type="checkbox" value='!loginModel.remember_me' name="remember_me" required
+							[(ngModel)]="loginModel.remember_me">Remember Me
+					</div>
+
+					<div class="form-group">
+						<!--<input type="submit" value="Login" class="btn float-right login_btn">-->
+						<button (click)='onLogin()' class="btn float-right login_btn">Login</button>
+
+					</div><br>
+
+				</form>
+				<div *ngIf='loading' class="d-flex justify-content-center">
+					<mat-progress-spinner  mode='indeterminate' ></mat-progress-spinner>
+				</div>
+				<hr>
+
+				<div class="d-flex justify-content-center">
+					<div class="social_icon">
+						<span><i class="fab fa-facebook-square"></i></span>
+						<span><i class="fab fa-google"></i></span>
+						<span><i class="fab fa-twitter-square"></i></span>
+						<span><i class="fab fa-linkedin"></i></span>
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Don't have an account?<a routerLink="/userRegistration">Sign Up</a>
+				</div>
+				<div class="d-flex justify-content-center">
+					<a routerLink="/reset">Forgot your password?</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

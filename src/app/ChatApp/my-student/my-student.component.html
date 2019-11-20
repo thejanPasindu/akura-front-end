@@ -1,0 +1,14 @@
+<div class="alert alert-success" role="alert">
+    <h5 class="alert-heading">
+      <span style="text-align: left" (click)="onDetails()" class="pointer">
+        {{student.name}}
+      </span>
+      <span class="float-right font-weight-light text-primary">
+          <div *ngIf="!student.status">Not Accepted Yet</div>
+        </span>
+    </h5>
+    <hr>
+    <p><input type="button" value="Send Message" (click)="gotoChatRoom()" class="btn btn-light float-right"></p>
+  
+    <p> shdfbshfbsnfdsjfn </p>
+  </div>

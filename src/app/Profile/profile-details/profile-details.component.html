@@ -1,0 +1,127 @@
+<div class="container">
+
+    <div disabled>
+      <label for="">Full Name</label>
+      <div class="row">
+
+        <div class="col">
+          <input type="text" class="form-control" placeholder="*First Name" name="fname" [(ngModel)]='user.fname'
+            disabled>
+
+        </div>
+
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Midel Name" name="mname" [(ngModel)]='user.mname'
+            disabled required>
+        </div>
+
+        <div class="col">
+          <input type="text" class="form-control" placeholder="*Surname" name="sname" required disabled
+            [(ngModel)]='user.sname'>
+
+        </div>
+
+      </div>
+
+
+      <!--DOB Entering-->
+      <div class="form-group container_small">
+        <label for="">Date of Birth</label>
+        <input type="date" name="dob" id="" [(ngModel)]="user.dob" class="form-control" disabled>
+      </div>
+      <!--gender Entering-->
+      <div class="form-group container_small border border-secondary p-1 rounded">
+        <label for="">Gender</label><br>
+        <div class="gen" disabled>
+          <input type="radio" class="" id="" name="gender" value="male" [(ngModel)]="user.gender" disabled>Male <br>
+          <input type="radio" class="" id="" name="gender" value="female" [(ngModel)]="user.gender" disabled> female
+        </div>
+      </div>
+
+      <!--Position Entering-->
+      <div class="form-group container_small">
+        <label for="">Position</label><br>
+        <input type="text" class="form-control" placeholder="*First Name" name="fname" [(ngModel)]='user.position'
+          disabled>
+      </div>
+    </div>
+
+
+    <!--Email-->
+    <div class="form-group container_small">
+      <label for="">Email address</label>
+      <input type="email" class="form-control" id="" placeholder="Your mail" required
+        pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" name="email" [(ngModel)]='user.email'>
+    </div>
+
+    <!--Contact number-->
+    <div class="form-group container_small">
+      <label for="">Contact Number</label>
+      <input type="tel" class="form-control" id="" id="" placeholder="*Contact No: +94765454544" required
+        placeholder="*Contact No: +94765454544" name="cnumber" [(ngModel)]='user.cnumber'>
+
+    </div>
+
+    <!--address entering-->
+    <div class="form-group container_small">
+      <label for="">Address</label>
+      <div class="row">
+
+          <div class="col">
+              <input type="text" class="form-control" placeholder="No" name="no"
+                  [(ngModel)]='user.no' disabled>
+          </div>
+
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Street" name="street"
+                  [(ngModel)]='user.street' disabled>
+          </div>
+
+          <div class="col">
+              <input type="text" class="form-control" placeholder="*City" name="city" required
+                  [class.is-invalid]="city.invalid && city.touched" #city="ngModel"
+                  [(ngModel)]='user.city' disabled>
+              <small class="text-danger" [class.d-none]="city.valid || city.untouched">City is
+                  required</small>
+
+          </div>
+
+      </div>
+  </div>
+
+    <!--Payment type Entering-->
+    <div class="form-group container_small" *ngIf="user.paymentType">
+      <label for="">Payment type</label>
+      <select name="paymentType" class="form-control" [(ngModel)]="user.paymentType">
+        <option value="">Select One...</option>
+        <option value="money" [selected]="user.paymentType===paymentType[0]">Money</option>
+        <option value="inventory" [selected]="user.paymentType===paymentType[1]">Inventory</option>
+      </select>
+    </div>
+
+    <!--Payment Amount Entering-->
+    <div class="form-group" *ngIf="user.paymentAmount">
+      <label for="">Payment Amount</label><br>
+      <input type="text" class="form-control" id="" name="paymentAmount" [(ngModel)]="user.paymentAmount"
+        placeholder="Enter the amount you expect to offer">
+    </div>
+
+    <!--occupation Entering-->
+    <div class="form-group" *ngIf="user.occupation">
+      <label for="">Occupation</label><br>
+      <input type="text" class="form-control" id="" name="occupation" [(ngModel)]="user.occupation"
+        placeholder="Enter your occupation here">
+    </div>
+
+    <!--Medium Entering-->
+    <div class="form-group" *ngIf="user.medium">
+      <label for="">Occupation</label><br>
+      <input type="text" class="form-control" id="" name="medium" [(ngModel)]="user.medium"
+        placeholder="Enter your medium here" disabled>
+    </div>
+
+    <div>
+      <button class="btn btn-primary" (click)='onUpdate()'>Save</button>
+    </div>
+
+</div>

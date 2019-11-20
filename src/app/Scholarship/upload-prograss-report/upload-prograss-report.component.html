@@ -1,0 +1,53 @@
+<div class="container">
+
+    <div *ngIf='!uploadBox'>
+      <form name="form" #f="ngForm" novalidate>
+  
+  
+  
+        <div *ngIf="type == types[0]">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Acadamic Year" value="" name='acadamic_year'
+              [(ngModel)]='uploadReport.acadamic_year' #acadamic_year="ngModel" disabled>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Semester Name" value="" name='semester' [(ngModel)]='uploadReport.semester'
+              #semester="ngModel" disabled>
+          </mat-form-field>
+          <br>
+        </div>
+  
+        <div *ngIf="type == types[1]">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="School Grade" value="" name='school_grade'
+              [(ngModel)]='uploadReport.school_grade' #school_grade="ngModel" disabled>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Term" value="" name='term' [(ngModel)]='uploadReport.term' #term="ngModel"
+              disabled>
+          </mat-form-field>
+        </div>
+  
+        <div> 
+          <!-- <label >
+          Choose File</label><br> -->
+          <div>
+            <img [src]="progressURL" alt="" width="60%" height="40%">
+          </div>
+
+          <input type="file" name="file" [(ngModel)]='uploadReport.myfile' (change)="uploadFile($event)" class="btn btn-outline-secondary">
+        </div><br>
+  
+        <!-- <button (click)="onUpload()">Upload</button> -->
+        <div class="form-group">
+          <button mat-raised-button color="primary" (click)="onUpload()" [disabled]="f.form.pristine || f.form.invalid">Upload</button>
+        </div>
+      </form>
+    </div>
+    <div class="alert alert-danger" *ngIf='uploadBox'>
+      {{uploadBox}}
+    </div>
+  
+  </div>

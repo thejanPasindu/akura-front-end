@@ -1,0 +1,18 @@
+<div class="container">
+
+  <div class='container-small bg-dark'>
+    <div class='container'>
+  <label class="hoverable" for="fileInput">
+    <img [src]="url ? url : '../../assets/img/img_avatar.png'">
+    <div class="hover-text">Choose file</div>
+    <div class="background"></div>
+  </label>
+  <br />
+  <input id="fileInput" type='file' (change)="onSelectFile($event)">
+  <button (click)="delete()" class="btn btn-danger" [disabled]='url==null'>delete</button>
+  <button (click)="onUpload()" class="btn btn-primary" [disabled]='url==null'>Save</button>
+</div>
+
+
+</div>
+</div>

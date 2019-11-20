@@ -1,0 +1,11 @@
+.flexleft{
+    float: left;
+}
+
+.flexright{
+    float: right;
+}
+
+.alert{
+    width: 80%;
+}

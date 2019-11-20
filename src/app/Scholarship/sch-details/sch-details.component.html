@@ -1,0 +1,249 @@
+<div class="container">
+
+
+
+  <div class="d-flex justify-content-center row">
+    <h3 class="col">Scholarship Application</h3>
+    <div class="float-right col">
+      <span (click)="onDetails()">Has sponsor</span>
+    </div>
+  </div>
+
+  <hr>
+
+
+
+  <div class="">
+
+    <form>
+
+      <!-- this for applier private details -->
+      <div class="">
+
+        <!-- for name -->
+        <div class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="First name" value="" name='fname' [(ngModel)]='applierDetails.fname' disabled>
+          </mat-form-field>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Midle name" value="" name='mname' [(ngModel)]='applierDetails.mname' disabled>
+          </mat-form-field>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Last name" value="" name='name' [(ngModel)]='applierDetails.name' disabled>
+          </mat-form-field>
+        </div>
+
+
+        <!-- for Address -->
+        <div>
+          <label for="address">Address</label>
+          <div class="row">
+            <mat-form-field class="example-half-width col">
+              <input matInput placeholder="No" value="" name='no' [(ngModel)]='applierDetails.no' disabled>
+            </mat-form-field>
+            <mat-form-field class="example-half-width col">
+              <input matInput placeholder="Street" value="" name='street' [(ngModel)]='applierDetails.street' disabled>
+            </mat-form-field>
+            <mat-form-field class="example-half-width col">
+              <input matInput placeholder="City" value="" name='city' [(ngModel)]='applierDetails.city' disabled>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- for DOB -->
+        <div class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Date of birth" value="" name='dob' [(ngModel)]='applierDetails.dob' disabled>
+          </mat-form-field>
+          <div class="col"></div>
+        </div>
+      </div>
+
+      <br>
+      <hr>
+      <!-- school details -->
+
+      <div *ngIf="selectedValue == education[0]" class="row">
+
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="School Name" value="" name='school' [(ngModel)]='schShip.school' disabled>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="Grade" value="" name='grade' [(ngModel)]='schShip.grade' disabled>
+        </mat-form-field>
+      </div>
+
+
+      <div *ngIf="selectedValue == education[1]">
+
+        <label for="univercity">University Details</label>
+
+        <div class="row">
+          <mat-form-field class="example-full-width col">
+            <input matInput placeholder="University Name" value="" name='university' [(ngModel)]='schShip.university'
+              disabled>
+          </mat-form-field>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <mat-form-field class="example-full-width col">
+            <input matInput placeholder="Faculty" value="" name='faculty' [(ngModel)]='schShip.faculty' disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Academic year" value="" name='academicyear' [(ngModel)]='schShip.academicyear'
+              disabled>
+          </mat-form-field>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Semester" value="" name='semester' [(ngModel)]='schShip.semester' disabled>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Address of boarding" value="" name='addrboarding'
+          [(ngModel)]='schShip.addrboarding' disabled>
+      </mat-form-field>
+
+      <br>
+      <hr>
+
+      <h5>Certificate: </h5>
+
+      <br>
+      <div>
+        <label>Letter of confirming the studentship</label><br>
+        <img src='http://127.0.0.1:8000/api/auth/imgConfirm/{{schShip.confirm_letter}}' alt="" width="60%" height="40%"
+          default="../../assets/img/default.jpg">
+      </div>
+      <br>
+
+      <div>
+        <label>Choose Grama Niladari Certificate</label><br>
+        <img src='http://127.0.0.1:8000/api/auth/imgGN/{{schShip.gn_certificate}}' alt="" width="60%" height="40%"
+          default="../../assets/img/default.jpg">
+      </div>
+      <br>
+
+      <div>
+        <label>Birth Certificate(side 1) </label><br>
+        <img src="http://127.0.0.1:8000/api/auth/imgBirth/{{schShip.birth_certificate_1}}" alt="" width="60%"
+          height="40%" default="../../assets/img/default.jpg">
+      </div>
+      <br>
+
+
+      <div>
+        <label>Birth Certificate(side 2) </label><br>
+        <img src="http://127.0.0.1:8000/api/auth/imgBirth/{{schShip.birth_certificate_2}}" alt="" width="60%"
+          height="40%" default="../../assets/img/default.jpg">
+      </div>
+      <br>
+      <br>
+      <!-- for result upload -->
+      <div>
+        <div *ngIf="selectedValue == education[1]" class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading year(level)" name='l_year' [(ngModel)]='schShip.l_year'
+              disabled>
+          </mat-form-field>
+
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading semester" name='l_semester' [(ngModel)]='schShip.l_semester'
+              required disabled>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="selectedValue == education[0]" class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading graed" name='l_grade' [(ngModel)]='schShip.l_grade' disabled>
+          </mat-form-field>
+
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading term" name='l_term' [(ngModel)]='schShip.l_term' required
+              disabled>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <label>last result sheet</label><br>
+        <img src="http://127.0.0.1:8000/api/auth/imgResult/{{schShip.last_result}}" alt="" width="60%" height="40%">
+      </div>
+      <br>
+
+
+      <h5>Guardian Details</h5>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name of the guardian" value="" name='guardian_name'
+          [(ngModel)]='schShip.guardian_name' disabled>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Relationship of guardian" value="" name='relationship'
+          [(ngModel)]='schShip.relationship' disabled>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Guardian's Contact number" value="" name='guardian_tp'
+          [(ngModel)]='schShip.guardian_tp' disabled>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Guardian's address" name='guardian_address'
+          [(ngModel)]='schShip.guardian_address' disabled></textarea>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Family anual income" value="" name='family_anual_income'
+          [(ngModel)]='schShip.family_anual_income' disabled>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Family anual expence" value="" name='family_anual_expence'
+          [(ngModel)]='schShip.family_anual_expence' disabled>
+      </mat-form-field>
+
+
+      <div>
+        <table class="table" style="width: 95%">
+          <thead>
+            <tr>
+              <th scope="col">Sibling Name</th>
+              <th scope="col">Sibling's relationship</th>
+              <th scope="col">Grade/Year</th>
+              <th scope="col">School/University</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let sibling of siblings'>
+              <td>{{sibling.sibling_name}}</td>
+              <td>{{sibling.sibling_relationship}}</td>
+              <td>{{sibling.grade_year}}</td>
+              <td>{{sibling.school_university}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div>
+        <div>
+          <mat-form-field class="example-half-width">
+            <input matInput placeholder="Suggest payment" value="" name='payment' [(ngModel)]="scholarshipPayment">
+          </mat-form-field>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="button" value="Approve" class="btn btn-success" (click)="onApprove()">
+        </div>
+        <div>
+          <input type="button" value="Reject" class="btn btn-danger" (click)="onReject()">
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Sibiling's Detailas</h1>
+<div mat-dialog-content>
+  <div>
+    <form>
+      <mat-form-field class="">
+        <input matInput placeholder="Sibiling's name" value="" name='sibling_name' [(ngModel)]='data.sibling_name' #sibling_name="ngModel"  [class.is-invalid]="sibling_name.invalid && sibling_name.touched"
+        class="form-control" ngModel required>
+        <small class="text-danger" [class.d-none]="sibling_name.valid || sibling_name.untouched">*sibling name name is required</small>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="">
+        <input matInput placeholder="Sibling's relationship" value="" name='sibling_relationship' [(ngModel)]='data.sibling_relationship' #sibling_relationship="ngModel"  [class.is-invalid]="sibling_relationship.invalid && sibling_relationship.touched"
+        class="form-control" ngModel required>
+        <small class="text-danger" [class.d-none]="sibling_relationship.valid || sibling_relationship.untouched">*sibling_relationship name is required</small>
+      </mat-form-field>
+      <br>
+
+      <div>
+        <mat-form-field class="">
+          <input matInput placeholder="School or University Name" value="" name='school_university' [(ngModel)]='data.school_university' #school_university="ngModel"  [class.is-invalid]="school_university.invalid && school_university.touched"
+          class="form-control" ngModel required>
+          <small class="text-danger" [class.d-none]="school_university.valid || school_university.untouched">*school or university name is required</small>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="">
+          <input matInput placeholder="Grade or Acadamic year" value="" name='grade_year' [(ngModel)]='data.grade_year' #grade_year="ngModel"  [class.is-invalid]="grade_year.invalid && grade_year.touched"
+          class="form-control" ngModel required>
+          <small class="text-danger" [class.d-none]="grade_year.valid || grade_year.untouched">*grade or year is required</small>
+        </mat-form-field>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Add</button>
+</div>

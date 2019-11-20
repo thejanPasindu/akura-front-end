@@ -1,0 +1,16 @@
+<div>
+  <div>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link routerLink="editproject" (click)="activeLink = links[0]"
+        [active]="activeLink ==links[0]" *ngIf="(tab=='admin')">{{links[0]}}</a>
+
+      <a mat-tab-link routerLink="editrole" (click)="activeLink = links[1]"
+        [active]="activeLink ==links[1]" *ngIf="(tab=='admin')">{{links[1]}}</a>
+
+        <a mat-tab-link routerLink="profileResetPass" (click)="activeLink = links[2]"
+        [active]="activeLink ==links[2]">{{links[2]}}</a>
+    </nav>
+    <br>
+    <router-outlet></router-outlet>
+  </div>
+</div>

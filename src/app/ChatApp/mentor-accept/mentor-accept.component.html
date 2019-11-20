@@ -1,0 +1,9 @@
+<div class='container'>
+  <!-- {{list|json}}-->
+  <app-mentor-accept-student 
+    *ngFor="let student of list" 
+    [student]='student' 
+    (afterAccept)="afterAccept($event)"
+    ></app-mentor-accept-student>
+
+</div>

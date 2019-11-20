@@ -1,0 +1,9 @@
+<div class='container'>
+ <!-- {{list|json}}-->
+  <app-mentor-req  
+    *ngFor="let mentor of list" 
+    [mentor]='mentor' 
+    (afterRequest)="afterRequest($event)"
+    ></app-mentor-req>
+  
+</div>

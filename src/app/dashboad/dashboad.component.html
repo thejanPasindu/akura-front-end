@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div class="row">
+      
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <div class="container_menu">
+           <i class="fas fa-bars" style="padding:5px;"></i> Menu
+          <a [routerLink]="['income']">Add Income</a><br>
+          <a [routerLink]="['expenses']">Add Expenses</a>
+          <a [routerLink]="['createproject']">Create Project</a>
+          <a [routerLink]="['schApplyForm1']">Apply Scholarship</a>
+          <a [routerLink]="['generateReport']">Generate Report</a>
+          <a [routerLink]="['enrollProject']">Enroll Report</a>
+
+
+        </div>
+      </div>
+      <div class="col-7">
+          <router-outlet></router-outlet>
+      </div>
+    </div>
+    
+</div>

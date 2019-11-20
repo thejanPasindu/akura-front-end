@@ -1,0 +1,16 @@
+
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">
+      <span style="text-align: left" (click)="onDetails()" class="pointer">
+        {{mentor.name}}
+      </span>
+      <span class="float-right">
+          <input type="button" value="Request" (click)="onRequest()" class="btn btn-success">
+      </span>
+    </h4>
+    
+    
+    <hr>
+    <p>Subjects</p>
+    {{mentor.subject}}
+  </div>

@@ -1,0 +1,230 @@
+<div class="container">
+
+
+
+  <div class="d-flex justify-content-center">
+    <h3>Scholarship Application</h3>
+  </div>
+
+  <hr>
+
+  <div class="">
+
+    <form name="form" #f="ngForm" novalidate>
+
+      <!-- <mat-form-field>
+        <mat-label>I am</mat-label>
+        <select matNativeControl [(ngModel)]="selectedValue" name="education" (change)="typeChang($event)">
+          <option value="school">School Student</option>
+          <option value="university">University Student</option>
+        </select>
+      </mat-form-field> -->
+
+
+      <div *ngIf="selectedValue == education[0]">
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="School Name" value="" name='school' [(ngModel)]='schShip.school' >
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Grade" value="" name='grade' [(ngModel)]='schShip.grade' >
+        </mat-form-field>
+
+      </div>
+
+
+      <div *ngIf="selectedValue == education[1]">
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="University Name" value="" name='university' [(ngModel)]='schShip.university'>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Faculty" value="" name='faculty' [(ngModel)]='schShip.faculty'>
+        </mat-form-field>
+
+        <mat-form-field class="example-half-width">
+          <input matInput placeholder="Academic year" value="" name='academicyear' [(ngModel)]='schShip.academicyear'>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-form-field class="example-half-width">
+          <input matInput placeholder="Semester" value="" name='semester' [(ngModel)]='schShip.semester'>
+        </mat-form-field>
+      </div>
+
+
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Address of boarding" value="" name='addrboarding'
+          [(ngModel)]='schShip.addrboarding'>
+      </mat-form-field>
+
+      <h5>Certificate: </h5>
+
+      <br>
+
+      <div>
+        <label>Choose Letter of confirming the studentship</label><br>
+        <div>
+          <img [src]="confermLetterURL" alt="" width="60%" height="40%">
+        </div>
+        <input type="file" name="file" [(ngModel)]='schDetails.confirm_letter' (change)="uploadConfirmLetter($event)"
+          class="btn btn-outline-secondary" required>
+      </div>
+      <br>
+
+      <div>
+        <label>Choose Grama Niladari Certificate</label><br>
+        <div>
+          <img [src]="GNLetterURL" alt="" width="60%" height="40%">
+        </div>
+
+        <input type="file" name="file" [(ngModel)]='schDetails.gn_certificate' (change)="uploadGNLetter($event)"
+          class="btn btn-outline-secondary" required>
+      </div>
+      <br>
+
+      <div>
+        <label>Choose Birth Certificate(side 1) </label><br>
+        <div>
+          <img [src]="birthC1URL" alt="" width="60%" height="40%">
+        </div>
+        <input type="file" name="file" [(ngModel)]='schDetails.birth_certificate_1' (change)="uploadBirth1($event)"
+          class="btn btn-outline-secondary" required>
+      </div>
+      <br>
+
+
+      <div>
+        <label>Choose Birth Certificate(side 2) </label><br>
+        <div>
+          <img [src]="birthC2URL" alt="" width="60%" height="40%">
+        </div>
+        <input type="file" name="file" [(ngModel)]='schDetails.birth_certificate_2' (change)="uploadBirth2($event)"
+          class="btn btn-outline-secondary" required>
+      </div>
+      <br>
+
+      <!-- for result upload -->
+      <div>
+        <div *ngIf="selectedValue == education[1]">
+          <mat-form-field class="example-half-width">
+            <input matInput placeholder="Result uploading year(level)" name='l_year' [(ngModel)]='schShip.l_year'>
+          </mat-form-field>
+          &nbsp;&nbsp;&nbsp;
+          <mat-form-field class="example-half-width">
+            <input matInput placeholder="Result uploading semester" name='l_semester' [(ngModel)]='schShip.l_semester'>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="selectedValue == education[0]">
+          <mat-form-field class="example-half-width">
+            <input matInput placeholder="Result uploading grade" name='l_grade' [(ngModel)]='schShip.l_grade'>
+          </mat-form-field>
+          &nbsp;&nbsp;&nbsp;
+          <mat-form-field class="example-half-width">
+            <input matInput placeholder="Result uploading term" name='l_term' [(ngModel)]='schShip.l_term' >
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <label>Choose latest result sheet</label><br>
+        <div>
+          <img [src]="resultSheetURL" alt="" width="60%" height="40%">
+        </div>
+        <input type="file" name="file" [(ngModel)]='schDetails.last_result' (change)="uploadResult($event)"
+          class="btn btn-outline-secondary" required>
+      </div>
+      <br>
+
+
+      <h5>Guardian Details</h5>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name of the guardian" value="" name='guardian_name'
+          [(ngModel)]='schShip.guardian_name' #guardian_name="ngModel"  [class.is-invalid]="guardian_name.invalid && guardian_name.touched"
+          class="form-control" ngModel required>
+          <small class="text-danger" [class.d-none]="guardian_name.valid || guardian_name.untouched">*Guardian name is required</small>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Relationship of guardian" value="" name='relationship'
+          [(ngModel)]='schShip.relationship' #relationship="ngModel" [class.is-invalid]="relationship.invalid && relationship.touched"
+          class="form-control" ngModel required >
+          <small class="text-danger" [class.d-none]="relationship.valid || relationship.untouched">*Guardian Relationship is required</small>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Guardian's Contact number" value="" name='guardian_tp'
+          [(ngModel)]='schShip.guardian_tp'  #guardian_tp="ngModel"  [class.is-invalid]="guardian_tp.invalid && guardian_tp.touched"  class="form-control" (keypress)="keyPress($event)" minlength=10 maxlength=10 ngModel required>
+          <small class="text-danger" [class.d-none]="guardian_tp.valid || guardian_tp.untouched">
+            invalid contact number</small>
+       
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Guardian's address" name='guardian_address'
+          [(ngModel)]='schShip.guardian_address' #guardian_address="ngModel"  [class.is-invalid]="guardian_address.invalid && guardian_address.touched"
+          class="form-control" ngModel required>
+        </textarea>
+        <small class="text-danger" [class.d-none]="guardian_address.valid || guardian_address.untouched">*Guardian address is required</small>
+          
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Family anual income" value="" name='family_anual_income'
+          [(ngModel)]='schShip.family_anual_income'min="00.00" pattern="\d+(\.\d{2})?"
+          #family_anual_income="ngModel" [class.is-invalid]="family_anual_income.invalid && family_anual_income.touched" class="form-control" ngModel required>
+          <small class="text-danger" [class.d-none]="family_anual_income.valid || family_anual_income.untouched">*family anual income is required</small>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Family anual expence" value="" name='family_anual_expence'
+          [(ngModel)]='schShip.family_anual_expence' min="00.00" pattern="\d+(\.\d{2})?"
+          #family_anual_expence="ngModel" [class.is-invalid]="family_anual_expence.invalid && family_anual_expence.touched" class="form-control" ngModel required>
+          <small class="text-danger" [class.d-none]="family_anual_expence.valid || family_anual_expence.untouched">*family anual expence is required</small>
+      </mat-form-field>
+
+
+      <div>
+        <table class="table" width="90%">
+          <thead>
+            <tr>
+              <th scope="col">Sibling Name</th>
+              <th scope="col">Sibling's relationship</th>
+              <th scope="col">Grade/Year</th>
+              <th scope="col">School/University</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let sibling of siblings'>
+              <td>{{sibling.sibling_name}}</td>
+              <td>{{sibling.sibling_relationship}}</td>
+              <td>{{sibling.grade_year}}</td>
+              <td>{{sibling.school_university}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="form-group">
+        <button mat-stroked-button color="primary" (click)='openDialog()'>Add siblings</button>
+      </div>
+
+      <div class="form-group" *ngIf="!isShow">
+        <button mat-raised-button color="primary" (click)='onApply()' [disabled]="f.form.pristine || f.form.invalid">Apply</button>
+      </div>
+
+      <div *ngIf='isShow'>
+
+        <input type="button" value="Save changes" class="btn btn-success" (click)="onChangedetais()">
+
+        <input type="button" value="Cancel application" class="btn btn-danger" (click)="onCancle()">
+
+      </div>
+
+    </form>
+  </div>
+
+</div>

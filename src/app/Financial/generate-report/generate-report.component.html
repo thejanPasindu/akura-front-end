@@ -1,0 +1,70 @@
+<div>
+  <h2 style="text-align: center;"><u>Financial Report Genarating</u></h2>
+
+  <!--left side form-->
+  <div class="left-side">
+      <form #gen="ngForm">
+          <!--title-->
+          <h6 style="padding-top: 10px;">Select Time Period</h6>
+
+          <div class="form-group container_small border border-secondary p-1 rounded">
+
+              <!--from date-->
+              <mat-form-field class="fromdate">
+                  <mat-label>From</mat-label>
+                  <input matInput name="from" id="" [matDatepicker]="picker" 
+                      placeholder="Choose a date" [(ngModel)]="report.from">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker startView="year"></mat-datepicker>
+                  <!-- <mat-error *ngIf="dateFormControl.hasError('required')">From date is Required</mat-error> -->
+              </mat-form-field>
+
+              <!--to date-->
+              <mat-form-field class="todate">
+                  <mat-label>To</mat-label>
+                  <input [min]="report.from" matInput name="to" id="" [matDatepicker]="picker2"
+                       placeholder="Choose a date" [(ngModel)]="report.to">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2 startView="year"></mat-datepicker>
+                  <!-- <mat-error *ngIf="dateFormControl2.hasError('required')">To date is Required</mat-error> -->
+              </mat-form-field>
+          </div>
+
+          <h6>Select Report Type</h6>
+          <div class="form-group container_small border border-secondary p-1 rounded">
+              <!--select transaction type-->
+              <div class="form-check">
+                  <div>
+                      <mat-checkbox (change)="showIncomeChange($event)" name="income"
+                          [(ngModel)]="report.showIncome">Income</mat-checkbox>
+                  </div>
+                  <div>
+                      <mat-checkbox (change)="showExpenceChange($event)" name="expence"
+                          [(ngModel)]="report.showExpence">Expense</mat-checkbox>
+                  </div>
+
+              </div>
+          </div>
+          <br><br>
+          <button
+              
+              mat-raised-button color="warn" class="reportgenerate" (click)="submitIT()">Submit</button><br><br>
+      </form>
+  </div>
+
+  <!--right side window-->
+  <div class="right-side">
+
+      <!--report preview-->
+      <div *ngIf="report.showPreview" class="outerPreview">
+          <button class="btn btn-danger" (click)="close()">X</button>
+          <app-pdfcreate></app-pdfcreate>
+      </div>
+
+      <!--default window-->
+      <div *ngIf="!report.showPreview" class="outerPreview2">
+
+      </div>
+  </div>
+
+</div>

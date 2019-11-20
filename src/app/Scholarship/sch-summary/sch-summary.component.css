@@ -1,0 +1,13 @@
+.containar{
+    margin: 10%;
+}
+
+.row{
+    margin-top: 20px;
+}
+
+span{
+    margin-left: 20px;
+    font-size: 2em;
+    font-stretch: condensed;
+}

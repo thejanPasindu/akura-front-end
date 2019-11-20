@@ -1,0 +1,26 @@
+/*@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+/* div.a {
+    text-align: center;
+    background-color:lightseagreen;
+  } */
+/* 
+.container{
+  width: 80%;
+  margin: 5%;
+} */
+
+table {
+    width: 100%;
+   
+  }
+  
+  .del{
+    cursor: pointer;
+    float: right;
+  }
+  
+  .centre {
+    text-align: center;
+    color: darkslategre;
+    font-size: 1em;
+  }

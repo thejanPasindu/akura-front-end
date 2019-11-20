@@ -1,0 +1,96 @@
+<div>
+  <h2 style="text-align: center;"><u>Managing Financial Details</u></h2>
+  <div class="left-side" style="border-style:none; border-radius:10px;">
+      <form #gen="ngForm">
+          <h6 style="padding-top: 10px;">Select time period</h6>
+          <div class="form-group container_small border border-secondary p-1 rounded">
+              <mat-form-field class="fromdate">
+                  <mat-label>From</mat-label>
+                  <input matInput name="from" id="" [matDatepicker]="picker" placeholder="Choose a date"
+                      [(ngModel)]="report.from" [formControl]="fromFormControl">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker startView="year"></mat-datepicker>
+                  <mat-error *ngIf="fromFormControl.hasError('required')"><b>From date is Required</b></mat-error>
+              </mat-form-field>
+              <mat-form-field class="todate">
+                  <mat-label>To</mat-label>
+                  <input matInput name="to" id="" [matDatepicker]="picker2" placeholder="Choose a date"
+                      [(ngModel)]="report.to" [formControl]="toFormControl">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2 startView="year"></mat-datepicker>
+                  <mat-error *ngIf="toFormControl.hasError('required')"><b>From date is Required</b></mat-error>
+              </mat-form-field>
+          </div>
+          <h6>Select Report Type</h6>
+          <!-- {{report.toogleType}} -->
+          <mat-button-toggle-group class="togglebutton" #group="matButtonToggleGroup" [value]="report.toogleType"
+              (change)="report.toogleType=group.value">
+              <mat-button-toggle class="togglebutton-left" ngDefaultControl value="income">
+                  <mat-icon>trending_up</mat-icon>
+                  <mat-label>Income</mat-label>
+              </mat-button-toggle>
+              <mat-button-toggle class="togglebutton-right" ngDefaultControl value="expense">
+                  <mat-icon>trending_down</mat-icon>
+                  <mat-label>Expense</mat-label>
+              </mat-button-toggle>
+          </mat-button-toggle-group>
+          <button [disabled]="this.fromFormControl.invalid || this.toFormControl.invalid" mat-raised-button
+              color="primary" class="searchbutton" (click)="getData()">Search</button><br><br>
+      </form>
+
+  </div>
+  <div class="right-side">
+
+
+      <div *ngIf="report.showIncome" style="width:100%;">
+          <div style="padding:30px;">
+                  <h3>Available Incomes</h3>
+              <table style="width:100%;">
+                  <tr>
+                      <td style="padding: 20px;"><b>Date</b></td>
+                      <td style="padding: 20px;"><b>Desccription</b></td>
+                      <td style="padding: 20px;"><b>Amount</b></td>
+
+                  </tr>
+                  <tr class="expenseincomedata" *ngFor="let discription of report.income; index as index">
+                      <td style="padding: 20px;">{{report.income[index].date}}</td>
+                      <td style="padding: 20px;">{{report.income[index].discription}}</td>
+                      <td style="padding: 20px;"> {{report.income[index].amount}}</td>
+                      <td style="padding: 20px;"><button mat-mini-fab>
+                              <mat-icon aria-label="label" (click)="deleteField(report.income[index].id,'income')">
+                                  delete</mat-icon>
+                          </button></td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+
+      <div *ngIf="report.showExpence" style="width:100%">
+          <div style="padding:30px;">
+              <h3>Available Expenses</h3>
+              <table style="width:100%;">
+                  <tr>
+                      <td style="padding: 20px;"><b>Date</b></td>
+                      <td style="padding: 20px;"><b>Desccription</b></td>
+                      <td style="padding: 20px;"><b>Amount</b></td>
+
+                  </tr>
+                  <tr class="expenseincomedata" *ngFor="let discription of report.expence; index as index">
+                      <td style="padding: 20px;">{{report.expence[index].date}}</td>
+                      <td style="padding: 20px;">{{report.expence[index].discription}}</td>
+                      <td style="padding: 20px;"> {{report.expence[index].amount}}</td>
+                      <td style="padding: 20px;"> <button mat-mini-fab>
+                              <mat-icon aria-label="label" (click)="deleteField(report.expence[index].id,'expense')">
+                                  delete</mat-icon>
+                          </button></td>
+                  </tr>
+              </table>
+          </div>
+      </div>
+      <div *ngIf="!report.showExpence && !report.showIncome" class="defaultbox">
+
+      </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,18 @@
+.container{
+    margin: 5%;
+    width: 90%;
+}
+
+.del{
+    cursor: pointer;
+    float: right;
+  }
+
+button{
+    margin-top: 2px;
+}
+
+.dell{
+    cursor: pointer;
+    float: left;
+  }

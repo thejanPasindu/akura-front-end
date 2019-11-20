@@ -1,0 +1,160 @@
+.amount-input{
+    width: 100%;
+}
+.input-amount{
+    width:50%;
+}
+
+.discription{
+    width:100%;
+}
+
+.userinput{
+    width:100%;
+}
+
+.sponsorinput{
+    width:100%;
+}
+.image-frame{
+    position: relative;
+    left:1%;
+    top:1%;
+    width: 98%;
+    background-color: aqua;
+    border-style: solid ;
+}
+button.submitbutton{
+    width:30%;
+    margin-top: 50px;
+    margin-right:20px;
+    text-decoration:none;
+    background-color:transparent;
+    border-style: solid;
+    border-color: blue;
+    border-width: unset;
+    color: blue;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+button.submitbutton:hover{
+    background-color:rgb(66, 66, 255);
+    color:white;
+}
+button.resetbutton{
+    width:30%;
+    margin-top: 50px;
+    text-decoration:none;
+    background-color:transparent;
+    border-style: solid;
+    border-color: red;
+    border-width: unset;
+    color: red;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+button.resetbutton:hover {
+    background-color:rgb(255, 85, 85);
+    color:white;
+}
+.buttongroup{
+    margin-top: 10px;
+
+}
+
+.btn1{
+    margin: 10px 20px 10px 20px;
+}
+.startdate{
+ margin-right: 8%; 
+ width: 46%;  
+}
+.enddate{
+    margin-right: 0px;
+    width:46%;
+}
+div.left-side{
+    width:44%;
+    margin-left:3%;
+    margin-bottom: 10px;
+    background-color: rgb(248, 237, 223);
+    position: relative;
+}
+div.right-side{
+    width:100px;
+    height:100px;
+    margin-bottom: 10px;
+    position: absolute;
+}
+[class*="-side"]{
+    float:left;
+}
+.image{
+    margin-top: 20px;
+}
+.image-close-btn {
+    position: absolute;
+    z-index: 3;
+    right: 10px;
+    top:5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    height: 27px;
+    width: 27px;
+    padding: 1.4px;
+    margin-top: 7px;
+}
+.outerPreview{
+
+    width: 100%;
+    background-color: rgb(248, 237, 223);
+    position: relative;
+
+}
+.outerPreview2{
+
+    width: 100%;
+    background-color: rgb(248, 237, 223);
+    position: relative;
+
+}
+.successmsg{
+    width: 100%;
+    background-color: greenyellow;
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+}
+
+div.alert{
+    width:60%;
+    left:20%;
+    right:20%;
+    border-style:solid; 
+    border-radius:10px;
+}
+mat-option.matoption{
+    background-color: rgb(228, 243, 255);
+}
+
+h2 {
+color: black;
+}
+
+.image-upload{
+    border-style:solid;
+    padding:10px;
+    border-width:1px;
+    border-radius:5px;
+}
+.image-upload-button{
+    position: relative;
+}
+
+.image-upload-frame{
+    border-style:solid;
+    padding:10px;
+    border-width:1px;
+    border-radius:5px
+}

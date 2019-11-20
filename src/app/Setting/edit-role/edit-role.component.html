@@ -1,0 +1,85 @@
+<div class="container">
+  <!--Search user details-->
+  <div>
+    <label><b>User email: </b></label>
+    <input type="text" required #email="ngModel" class="form-control" name="email" [(ngModel)]='edit_roleModel.email'>
+    <small class="text-danger" [class.d-none]=" email.valid || email.untouched ">*User emial is
+      required</small>
+  </div>
+
+  <button mat-button (click)="onSearch()" mat-flat-button color="primary" class="del"> Search </button>
+</div>
+<hr>
+
+<div class="container" *ngIf="user_detailsModel.id!=null">
+  <div mat-dialog-content>
+    <!--Common details for all users-->
+    <p><b>Name: </b>{{user_detailsModel.fname}} {{user_detailsModel.mname}} {{user_detailsModel.sname}}</p>
+    <p><b>Date of Birth: </b>{{user_detailsModel.dob}}</p>
+    <p><b>Gender: </b>{{user_detailsModel.gender}}</p>
+    <p><b>Contact Number: </b>{{user_detailsModel.cnumber}}</p>
+    <p><b>Address: </b>{{user_detailsModel.no}}, {{user_detailsModel.street}}, {{user_detailsModel.city}}</p>
+
+    <!--School student-->
+    <div *ngIf="user_detailsModel.studingYear!=null">
+      <p><b>Registration Type: </b>{{user_detailsModel.registrationType}}</p>
+      <p><b>Studing Year: </b>{{user_detailsModel.studingYear}}</p>
+    </div>
+
+    <!--University Student-->
+    <div *ngIf="user_detailsModel.studingSemester!=null">
+      <p><b>Registration Type: </b>{{user_detailsModel.registrationType}}</p>
+      <p><b>Studing Semester: </b>{{user_detailsModel.studingSemester}}</p>
+    </div>
+
+    <!--Sponsor-->
+    <div *ngIf="user_detailsModel.paymentType!=null">
+      <p><b>Payment Type: </b>{{user_detailsModel.paymentType}}</p>
+      <p><b>Payment Amount: </b>{{user_detailsModel.paymentAmount}}</p>
+      <p><b>Occupation: </b>{{user_detailsModel.occupation}}</p>
+    </div>
+
+    <!--Coordinator-->
+    <div *ngIf="user_detailsModel.medium!=null && user_detailsModel.occupation!=null">
+      <p><b>Medium: </b>{{user_detailsModel.medium}}</p>
+      <p><b>Occupation: </b>{{user_detailsModel.occupation}}</p>
+    </div>
+
+    <!--Mentor-->
+    <div *ngIf="user_detailsModel.subject!=null">
+      <p><b>Related Subject: </b>{{user_detailsModel.subject}}</p>
+    </div>
+
+  </div>
+  <br>
+
+  <!--Edit user role-->
+  <div class="row">
+    <label class="col"><b> User Role: </b> {{user_detailsModel.position}}</label>
+    <div class="col">
+      <select name="role" class="form-control" [(ngModel)]="searchData.id" #role="ngModel">
+        <option value="{{role.id}}" *ngFor="let role of roles">{{role.name}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <button mat-button (click)="onEditRole()" mat-flat-button color="primary" class="dell"> Edit User Role </button>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <!--Deactivate User Account-->
+    <div *ngIf="user_detailsModel.active!=0">
+      <button mat-button (click)="onDeactivate()" mat-raised-button color="warn" class="dell"> Deactivate User Account
+      </button>
+    </div>
+
+    <!--Activate User Account-->
+    <div *ngIf="user_detailsModel.active!=1">
+      <button mat-button (click)="onActivate()" mat-stroked-button color="primary" class="dell"> Activate User Account
+      </button>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,154 @@
+<div class="container">
+  <h3>
+      Create New Project
+  </h3>
+  <form name="form" #f="ngForm" novalidate>
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="usr">Project Name:</label>
+        <input type="text" required #project_name="ngModel"
+          [class.is-invalid]="project_name.invalid && project_name.touched " class="form-control" name="project_name"
+          [(ngModel)]='projectModel.project_name'>
+        <small class="text-danger" [class.d-none]=" project_name.valid || project_name.untouched ">*Project name is
+          required</small>
+      </div>
+
+      <div class="form-group col">
+        <label for="usr">Project Manager Name:</label>
+        <select name="project_manager_id" class="form-control" required [(ngModel)]="projectModel.project_manager_id"
+          #project_manager_id="ngModel">
+          <option value="{{manager.id}}" *ngFor="let manager of managers">{{manager.name}}</option>
+        </select>
+        <small class="text-danger" [class.d-none]="project_manager_id.valid || project_manager_id.untouched">Please
+          choose a project manager</small>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="usr">Project Coordinator 1:</label>
+        <select name="project_coordinator1" class="form-control" required
+          [(ngModel)]="projectModel.project_coordinator1" #project_coordinator1="ngModel">
+          <option value="{{coordinator1.id}}" *ngFor="let coordinator1 of coordinators">{{coordinator1.name}}</option>
+        </select>
+        <small class="text-danger" [class.d-none]="project_coordinator1.valid || project_coordinator1.untouched">Please
+          choose a project coordinator</small>
+      </div>
+
+      <div class="form-group col">
+        <label for="usr">Project Coordinator 2:</label>
+        <select name="project_coordinator2" class="form-control" [(ngModel)]="projectModel.project_coordinator2"
+          #project_coordinator2="ngModel" (change)="changeCoordinator()">
+          <option value="{{coordinator2.id}}" *ngFor="let coordinator2 of coordinators">{{coordinator2.name}}</option>
+        </select>
+        <small class="text-danger" *ngIf="duplicate">Please choose another project coordinator</small>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="form-group col">
+        <label for="usr">Start Date:</label>
+        <input type="date" required #start_date="ngModel" [class.is-invalid]="start_date.invalid && start_date.touched "
+          class="form-control" name="start_date" [(ngModel)]='projectModel.start_date'
+          min="{{myDate | date:'yyyy-MM-dd'}}">
+        <small class="text-danger" [class.d-none]=" start_date.valid || start_date.untouched ">*Date required</small>
+      </div>
+
+      <div class="form-group col">
+        <label for="usr">End Date:</label>
+        <input type="date" class="form-control" required #end_date="ngModel"
+          [class.is-invalid]="end_date.invalid && end_date.touched " name="end_date" [(ngModel)]='projectModel.end_date'
+          min="{{projectModel.start_date}}">
+        <small class="text-danger" [class.d-none]=" end_date.valid || end_date.untouched ">*Date required</small>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="usr">Location:</label>
+      <input type="text" class="form-control" required #location="ngModel"
+        [class.is-invalid]="location.invalid && location.touched " name="location" [(ngModel)]='projectModel.location'>
+      <small class="text-danger" [class.d-none]=" location.valid || location.untouched ">*Location required</small>
+    </div>
+
+
+    <div class='row'>
+      <!-- address-line1 input-->
+      <div class="form-group col">
+        <label class="control-label">Address Line 1</label>
+        <div class="controls">
+          <input name="addres_line_1" type="text" placeholder="address line 1" class="form-control"
+            [(ngModel)]='projectModel.addres_line_1'>
+        </div>
+      </div>
+
+      <!-- address-line2 input-->
+      <div class="form-group col">
+        <label class="control-label">Address Line 2</label>
+        <div class="controls">
+          <input name="addres_line_2" type="text" placeholder="address line 2" class="form-control"
+            [(ngModel)]='projectModel.addres_line_2'>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <!-- city input-->
+      <div class="form-group col">
+        <label class="control-label">City / Town</label>
+        <div class="controls">
+          <input name="city" type="text" placeholder="city" class="form-control" [(ngModel)]='projectModel.city'>
+        </div>
+      </div>
+
+      <!-- district input-->
+      <div class="form-group col">
+        <label class="control-label">District</label>
+        <select name="district" class="form-control" required [(ngModel)]="projectModel.district" #district="ngModel">
+          <option value="{{district.id}}" *ngFor="let district of districts">{{district.district}}</option>
+        </select>
+        <small class="text-danger" [class.d-none]="district.valid || district.untouched">Please choose a
+          district</small>
+      </div>
+
+      <!-- postal-code input-->
+      <div class="form-group col">
+        <label class="control-label">Zip / Postal Code</label>
+        <div class="controls">
+          <input name="zip" type="text" placeholder="zip or postal code" class="form-control"
+            [(ngModel)]='projectModel.zip'>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="projectType">Project Type</label>
+      <select name="project_type" class="form-control" required [(ngModel)]="projectModel.project_type" #project_type="ngModel">
+        <option value="{{type.type}}" *ngFor="let type of types">{{type.type}}</option>
+      </select>
+      <small class="text-danger" [class.d-none]="project_type.valid || project_type.untouched">Please choose a
+        project type</small>
+    </div>
+
+
+    <div class="form-group" >
+      <label for="comment">Description:</label>
+      <textarea class="form-control" rows="5" required #discription="ngModel"
+        [class.is-invalid]="discription.invalid && discription.touched " name="description"
+        [(ngModel)]='projectModel.description'></textarea>
+      <small class="text-danger" [class.d-none]=" discription.valid || discription.untouched ">*Discription
+        required</small><br>
+    </div>
+
+    <div class="form-group">
+      <input type="button" class="btn btn-info" value="ADD DTAILS" (click)='onCreateProject()'
+      [disabled]="f.form.pristine || f.form.invalid">
+    </div>
+
+  </form>
+</div>

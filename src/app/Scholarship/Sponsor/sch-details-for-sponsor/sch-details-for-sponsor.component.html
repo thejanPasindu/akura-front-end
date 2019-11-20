@@ -1,0 +1,223 @@
+<div class="container">
+
+
+
+  <div class="d-flex justify-content-center">
+    <h3>Scholarship Application</h3>
+  </div>
+
+  <hr>
+
+
+
+  <div class="">
+
+    <form>
+
+      <!-- this for applier private details -->
+      <div class="">
+
+        <!-- for name -->
+        <div class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="First name" value="" name='fname' [(ngModel)]='applierDetails.fname' disabled>
+          </mat-form-field>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Midle name" value="" name='mname' [(ngModel)]='applierDetails.mname' disabled>
+          </mat-form-field>
+          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Last name" value="" name='name' [(ngModel)]='applierDetails.name' disabled>
+          </mat-form-field>
+        </div>
+
+
+        <!-- for Address
+        <div>
+          <label for="address">Address</label>
+          <div class="row">
+            <mat-form-field class="example-half-width col">
+              <input matInput placeholder="No" value="" name='no' [(ngModel)]='applierDetails.no' disabled>
+            </mat-form-field>
+            <mat-form-field class="example-half-width col">
+              <input matInput placeholder="Street" value="" name='street' [(ngModel)]='applierDetails.street' disabled>
+            </mat-form-field>
+            <mat-form-field class="example-half-width col">
+              <input matInput placeholder="City" value="" name='city' [(ngModel)]='applierDetails.city' disabled>
+            </mat-form-field>
+          </div>
+        </div> -->
+
+        <!-- for DOB -->
+        <div class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Date of birth" value="" name='dob' [(ngModel)]='applierDetails.dob' disabled>
+          </mat-form-field>
+          <div class="col"></div>
+        </div>
+      </div>
+
+      <br>
+      <hr>
+      <!-- school details -->
+
+      <div *ngIf="selectedValue == education[0]" class="row">
+
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="School Name" value="" name='school' [(ngModel)]='schShip.school' disabled>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="Grade" value="" name='grade' [(ngModel)]='schShip.grade' disabled>
+        </mat-form-field>
+      </div>
+
+
+      <div *ngIf="selectedValue == education[1]">
+
+        <label for="univercity">University Details</label>
+
+        <div class="row">
+          <mat-form-field class="example-full-width col">
+            <input matInput placeholder="University Name" value="" name='university' [(ngModel)]='schShip.university'
+              disabled>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width col">
+            <input matInput placeholder="Faculty" value="" name='faculty' [(ngModel)]='schShip.faculty' disabled>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Academic year" value="" name='academicyear' [(ngModel)]='schShip.academicyear'
+              disabled>
+          </mat-form-field>
+
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Semester" value="" name='semester' [(ngModel)]='schShip.semester' disabled>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <br>
+      <hr>
+
+      <h5>Certificate: </h5>
+
+      <br>
+      <div>
+        <label>Letter of confirming the studentship</label><br>
+        <img src='http://127.0.0.1:8000/api/auth/imgConfirm/{{schShip.confirm_letter}}' alt=""
+          default="../../assets/img/default.jpg">
+      </div>
+
+      <br>
+      <br>
+      <!-- for result upload -->
+      <div>
+        <div *ngIf="selectedValue == education[1]" class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading year(level)" name='l_year' [(ngModel)]='schShip.l_year'
+              disabled>
+          </mat-form-field>
+
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading semester" name='l_semester' [(ngModel)]='schShip.l_semester'
+              required disabled>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="selectedValue == education[0]" class="row">
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading graed" name='l_grade' [(ngModel)]='schShip.l_grade' disabled>
+          </mat-form-field>
+
+          <mat-form-field class="example-half-width col">
+            <input matInput placeholder="Result uploading term" name='l_term' [(ngModel)]='schShip.l_term' required
+              disabled>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <label>last result sheet</label><br>
+        <img src="http://127.0.0.1:8000/api/auth/imgResult/{{schShip.last_result}}" alt="">
+      </div>
+      <br>
+
+
+      <h5>Guardian's Details</h5>
+      <div class="row">
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="Name of the guardian" value="" name='guardian_name'
+            [(ngModel)]='schShip.guardian_name' disabled>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="Relationship of guardian" value="" name='relationship'
+            [(ngModel)]='schShip.relationship' disabled>
+        </mat-form-field>
+      </div>
+
+      <!-- <mat-form-field class="example-full-width">
+        <input matInput placeholder="Guardian's Contact number" value="" name='guardian_tp'
+          [(ngModel)]='schShip.guardian_tp' disabled>
+      </mat-form-field> -->
+
+
+      <div class="row">
+        <mat-form-field class="example-full-width col">
+          <textarea matInput placeholder="Guardian's address" name='guardian_address'
+            [(ngModel)]='schShip.guardian_address' disabled></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="Family anual income" value="" name='family_anual_income'
+            [(ngModel)]='schShip.family_anual_income' disabled>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width col">
+          <input matInput placeholder="Family anual expence" value="" name='family_anual_expence'
+            [(ngModel)]='schShip.family_anual_expence' disabled>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Sibling Name</th>
+              <th scope="col">Sibling's relationship</th>
+              <th scope="col">Grade/Year</th>
+              <th scope="col">School/University</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let sibling of siblings'>
+              <td>{{sibling.sibling_name}}</td>
+              <td>{{sibling.sibling_relationship}}</td>
+              <td>{{sibling.grade_year}}</td>
+              <td>{{sibling.school_university}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <div>
+        <mat-form-field class="example-half-width col">
+          <input matInput placeholder="Suggest Scholarship Amount" name='suggest_amount'
+            [(ngModel)]='schShip.suggest_amount' disabled>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="my-btn" (click)="onOffer()">Offer scholarship</button>
+      </div>
+    </form>
+  </div>
+
+</div>

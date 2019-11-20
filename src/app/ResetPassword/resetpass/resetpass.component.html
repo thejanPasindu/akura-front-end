@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="card">
+
+      <div class="card-header">
+        <img src="../../assets/img/akura_logo.png" alt="">
+        <h3>Reset Password</h3>
+      </div>
+
+      <div class="card-body">
+        <div *ngIf='msgShow'>
+          {{msg}}
+        </div>
+
+        <form *ngIf='show'>
+
+          <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" name='password'
+              [(ngModel)]='userModule.password'>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="confirm password" [type]="hide2 ? 'password' : 'text'"
+              name='password_confirmation' [(ngModel)]='userModule.password_confirmation'>
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" (click)='onResetPasswoord()'>Reset</button>
+        </form>
+
+
+
+
+      </div>
+
+
+
+
+      <div class="card-footer">
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

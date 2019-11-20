@@ -1,0 +1,91 @@
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+.example-fill-remaining {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  mat-drawer-container, mat-drawer{
+      height: 100%;
+  }
+  
+  mat-drawer{
+      width: 180px;
+  }
+
+  .menubar{
+    background-color: darkslategrey;
+    
+  }
+
+  .notification{
+      padding: 5px 10px;
+  }
+
+.sidenav{
+    background-color: darkslategrey;
+    text-align: left;
+}
+
+.mybtn button{
+    text-align: left;
+}
+.header{
+    padding: 10px 20px;
+    
+}
+
+.logo{
+    width: 150px;
+    height: 45px;
+}
+
+.user{
+    padding: 0px;
+    margin: 5px;
+}
+
+.welcome{
+    font-style: none;
+    margin-left: 5px;
+}
+
+button{
+    width: 100%;
+    
+}
+
+a{
+    color: black;
+}
+
+.notifi:hover{
+    font-size: 10px;
+    color: blueviolet;
+    margin: 0px 0px 0px 10px;
+}
+.notifi{
+    font-size: 10px;
+    color: black;
+    margin: 0px 0px 0px 10px;
+}
+.notifiMain{
+    width: 100px;
+}
+
+.fas, .far{
+    /*color: #5c0e08;*/
+    font-size: 18px;
+}
+
+.userimg{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-top: 5px;
+}

@@ -1,0 +1,73 @@
+.outerPreview{
+
+    width: 100%;
+    position: relative;
+    background-color: rgb(212, 231, 231);
+    z-index: 4;
+
+}
+.outerPreview2{
+
+    width: 100%;
+    height: 464px;
+    position: relative;
+    z-index: 4;
+    background-color: rgb(212, 231, 231);
+
+}
+
+button.reportgenerate{
+    width:90%;
+    margin-left:10px;
+    margin-right:10px;
+    background-color:transparent;
+    border-style: solid;
+    border-color: blue;
+    border-width: unset;
+    color: blue;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+button.reportgenerate:hover{
+    background-color:rgb(66, 66, 255);
+    color:white;
+}
+.fromdate{
+    width:100%;
+    padding: 10px;
+}
+.todate{
+    width:100%;
+    padding:10px;
+}
+div.left-side{
+    width:22%;
+    margin-top: 50px;
+    margin-left: 2%;
+    position: relative;
+    background-color: rgb(188, 247, 247);
+    padding-right: 10px;
+    border-style:none; 
+    border-radius:10px;
+}
+div.right-side{
+    width:73%;
+    position: relative;
+    border-style: none;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-right:2%;
+    margin-left:1%;
+    background-color: rgb(212, 231, 231);
+    height: 100%;
+    
+}
+[class*="-side"] {
+    float: left;
+    padding: 5px;
+}
+
+.btn{
+    float: right;
+    border-radius: 5px;
+}

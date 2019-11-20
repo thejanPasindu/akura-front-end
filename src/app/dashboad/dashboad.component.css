@@ -1,0 +1,49 @@
+.sidebar{
+    align-content: left;
+    height: 100%;
+    margin-bottom: auto;
+    background-color: rgba(226, 219, 233, 0.7) !important;
+}
+
+.container{
+    
+    margin-bottom: auto;
+    height: 100%;
+    width: 90%;
+    background-color: rgba(226, 219, 233, 0.7) !important;
+    padding: 10px;
+}
+
+.container_menu{
+    
+    margin-bottom: auto;
+    height: 100%;
+    width: 90%;
+    background-color: rgba(226, 219, 233, 0.7) !important;
+    padding: 0px;
+}
+
+a:link, a:visited {
+    background-color: #80dfff;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+
+  }
+  
+  a:hover, a:active {
+    background-color: #e6f9ff;
+    color: aqua;
+  }
+
+  .menu{
+    margin-bottom: auto;
+    height: 20px;
+    width: 100%;
+    background-color: rgba(226, 219, 233, 0.7) !important;
+    padding: 0px;
+  }

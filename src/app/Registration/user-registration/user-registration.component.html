@@ -1,0 +1,294 @@
+<div [ngClass]="{'container':!isPhone, 'rounded':true, 'container_phone':isPhone}" >
+        <img src="../../assets/img/akura_logo.png" alt="Akura Logo"><br>
+        <h5>User Registration</h5>
+    
+        <form name="form" #f="ngForm" novalidate>
+            <!--{{userModel|json}}-->
+    
+            <mat-horizontal-stepper>
+    
+                <mat-step label="User Details">
+                    <!--Name Entering-->
+                    <label for="">Full Name</label>
+                    <div [ngClass]="{'row':!isPhone}">
+    
+                        <div [ngClass]="{'col':!isPhone}">
+                            <input type="text" class="form-control" placeholder="*First Name" name="fname"
+                                [(ngModel)]='userModel.fname' [class.is-invalid]="fname.invalid && fname.touched"
+                                #fname="ngModel" required>
+                            <small class="text-danger" [class.d-none]="fname.valid || fname.untouched">First Name is
+                                required</small>
+    
+                        </div>
+    
+                        <div [ngClass]="{'col':!isPhone}">
+                            <input type="text" class="form-control" placeholder="Midel Name" name="mname"
+                                [(ngModel)]='userModel.mname' required>
+                        </div>
+    
+                        <div [ngClass]="{'col':!isPhone}">
+                            <input type="text" class="form-control" placeholder="*Surname" name="sname" required
+                                [(ngModel)]='userModel.sname' [class.is-invalid]="sname.invalid && sname.touched"
+                                #sname="ngModel" [(ngModel)]='userModel.sname'>
+                            <small class="text-danger" [class.d-none]="sname.valid || sname.untouched">SurName is
+                                required</small>
+                        </div>
+    
+                    </div>
+    
+                    <!--Password entering-->
+                    <div class="form-group container_small">
+                        <label for="">Password</label>
+                        <div [ngClass]="{'row':!isPhone}">
+                            <div [ngClass]="{'col':!isPhone}">
+                                <input type="password" class="form-control" name="password" [(ngModel)]="userModel.password"
+                                    #password="ngModel" required
+                                    [class.is-invalid]="password.invalid && password.touched" />
+                                <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is
+                                    required</small>
+                            </div>
+                            <div [ngClass]="{'col':!isPhone}">
+                                <input type="password" class="form-control" name="password_confirmation"
+                                    [(ngModel)]="userModel.password_confirmation" #password_confirmation="ngModel" required
+                                    appConfirmEqualValidator="password"
+                                    [class.is-invalid]="password_confirmation.invalid && password_confirmation.touched" />
+                                <small class="text-danger"
+                                    [class.d-none]="password_confirmation.valid || password_confirmation.untouched">
+                                    Password confirmation is required</small>
+                                <small class="text-danger"
+                                    *ngIf="password_confirmation?.touched && password_confirmation?.errors?.notEqual && !password_confirmation?.errors?.required">
+                                    Password does not match. </small>
+                            </div>
+                        </div>
+                        <small class="form-text text-muted">Least contain, 8 characters,One numerical character and
+                            symbol.</small>
+                    </div>
+    
+    
+                    <!--DOB Entering-->
+                    <div class="form-group container_small">
+                        <label for="">Date of Birth*</label>
+                        <input type="date" name="dob" [(ngModel)]="userModel.dob" class="form-control"
+                            [class.is-invalid]="dob.invalid && dob.touched" #dob="ngModel" required
+                            max="{{myDate | date:'yyyy-MM-dd'}}">
+                        <small class="text-danger" [class.d-none]="dob.valid || dob.untouched">date Of Birth is
+                            required</small>
+                    </div>
+                    <!--gender Entering-->
+                    <div class="form-group container_small border border-secondary p-1 rounded">
+                        <label for="">Gender*</label><br>
+                        <div class="gen">
+                            <input type="radio" name="gender" value="male" [(ngModel)]="userModel.gender">Male <br>
+                            <input type="radio" name="gender" value="female" [(ngModel)]="userModel.gender">female
+                        </div>
+                        <!-- <small class="text-danger" [class.d-none]="gender.valid || gender.untouched">Please enter a
+                            gender</small> -->
+                    </div>
+    
+                    <!--Position Entering-->
+                    <div class="form-group container_small">
+                        <label for="">Position</label>
+                        <select name="position" class="form-control" (change)="selectChange($event)"
+                            [(ngModel)]="userModel.position" required
+                            [class.is-invalid]="position.invalid && position.touched" #position="ngModel">
+                            <option value="">I am ...</option>
+                            <option value="student">Student</option>
+                            <option value="sponsor">Sponsor</option>
+                            <option value="coordinator">Coordinator</option>
+                            <option value="mentor">Mentor</option>
+                        </select>
+                        <small class="text-danger" [class.d-none]="position.valid || position.untouched">Please choose a
+                            position</small>
+                    </div>
+    
+    
+                    <button mat-button matStepperNext>Next</button>
+                </mat-step>
+    
+                <mat-step label="Contact Details">
+                    <div>
+                        <!--Email-->
+                        <div class="form-group container_small">
+                            <label for="">Email address</label>
+                            <input type="email" class="form-control" name="email" placeholder="Your mail"
+                                [class.is-invalid]="email.invalid && email.touched" #email="ngModel"
+                                pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]='userModel.email'
+                                required>
+                            <div *ngIf="email.errors && (email.valid || email.touched)">
+                                <small class="text-danger" *ngIf="email?.errors.required">email must be required</small>
+                                <small class="text-danger" *ngIf="email?.errors.pattern">Invalid email</small>
+                            </div>
+                        </div>
+    
+                        <!--Contact number-->
+                        <div class="form-group container_small">
+                            <label for="">Contact Number</label>
+                            <input type="text" class="form-control" placeholder="*Contact No: +94765454544" required
+                                placeholder="*Contact No: +94765454544" name="cnumber" [(ngModel)]='userModel.cnumber'
+                                (keypress)="keyPress($event)" minlength=10 maxlength=10 #cnumber="ngModel"
+                                [class.is-invalid]="cnumber.invalid && cnumber.touched">
+                            <small class="text-danger" [class.d-none]="cnumber.valid || cnumber.untouched">
+                                invalid contact number</small>
+                        </div>
+    
+                        <!--address entering-->
+                        <div class="form-group container_small">
+                            <label for="">Address</label>
+                            <div [ngClass]="{'row':!isPhone}">
+    
+                                <div [ngClass]="{'col':!isPhone}">
+                                    <input type="text" class="form-control" placeholder="No" name="no"
+                                        [(ngModel)]='userModel.no'>
+                                </div>
+    
+                                <div [ngClass]="{'col':!isPhone}">
+                                    <input type="text" class="form-control" placeholder="Street" name="street"
+                                        [(ngModel)]='userModel.street'>
+                                </div>
+    
+                                <div [ngClass]="{'col':!isPhone}">
+                                    <input type="text" class="form-control" placeholder="*City" name="city" required
+                                        [class.is-invalid]="city.invalid && city.touched" #city="ngModel"
+                                        [(ngModel)]='userModel.city'>
+                                    <small class="text-danger" [class.d-none]="city.valid || city.untouched">City is
+                                        required</small>
+    
+                                </div>
+    
+                            </div>
+                        </div>
+    
+    
+                    </div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </mat-step>
+                <mat-step label="Other Details">
+    
+                    <div>
+    
+    
+                        <div *ngIf="ev == ex[0]">
+                            <!--Registration type-->
+                            <div class="form-group container_small">
+                                <label for="">Registration type</label>
+                                <select name="registrationType" class="form-control" (change)="selectChange2($event)"
+                                    required [(ngModel)]="userModel.registrationType" #registrationType="ngModel">
+                                    <option value="">Select One...</option>
+                                    <option value="schoolStudent">School Student</option>
+                                    <option value="universityStudent">University Student</option>
+                                </select>
+                            </div>
+                            <div *ngIf="studentType == studentTypeList[1]">
+                                <div class="form-group container_small">
+                                    <label for="">Studing Year</label>
+                                    <select name="studingYear" class="form-control" [(ngModel)]="userModel.studingYear">
+                                        <option value="">Select One...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                                <div class="form-group container_small">
+                                    <label for="">Studing Semester</label>
+                                    <select name="studingSemester" class="form-control"
+                                        [(ngModel)]="userModel.studingSemester">
+                                        <option value="">Select One...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div *ngIf="ev == ex[1]">
+                            <!--Payment type Entering-->
+                            <div class="form-group container_small">
+                                <label for="">Payment type</label>
+                                <select name="paymentType" class="form-control" [(ngModel)]="userModel.paymentType">
+                                    <option value="">Select One...</option>
+                                    <option value="money">Money</option>
+                                    <option value="inventory">Inventory</option>
+                                </select>
+                            </div>
+    
+                            <!--Payment Amount Entering-->
+                            <div class="form-group">
+                                <label for="">Payment Amount</label><br>
+                                <input type="text" class="form-control" name="paymentAmount"
+                                    [(ngModel)]="userModel.paymentAmount"
+                                    placeholder="Enter the amount you expect to offer">
+                            </div>
+    
+                            <!--occupation Entering-->
+                            <div class="form-group">
+                                <label for="">Occupation</label><br>
+                                <input type="text" class="form-control" name="occupation" [(ngModel)]="userModel.occupation"
+                                    placeholder="Enter your occupation here">
+                            </div>
+                        </div>
+    
+                        <div *ngIf="ev == ex[2]">
+                            <!--Medium Entering-->
+                            <div class="form-group container_small">
+                                <label for="">Medium</label>
+                                <select name="medium" class="form-control" [(ngModel)]="userModel.medium"
+                                    (change)="selectChangeMediam($event)">
+                                    <option value=''>Select One...</option>
+                                    <option value="sinhala">Sinhala</option>
+                                    <option value="tamil">Tamil</option>
+                                    <option value="english">English</option>
+                                </select>
+                            </div>
+    
+    
+                            <!--Subject Entering-->
+                            <div class="form-group container_small">
+                                <label for="">Subject/Interested Fields</label>
+                                <textarea class="form-control" name="subject" [(ngModel)]="userModel.subject"
+                                    placeholder="subjects which you like to be in mentoring" cols="20" rows="5"
+                                    name="subject" required></textarea>
+                            </div>
+    
+    
+                            <!--occupation Entering-->
+                            <div class="form-group">
+                                <label for="">Occupation</label><br>
+                                <input type="text" class="form-control" id="" name="occupation"
+                                    [(ngModel)]='userModel.occupation' placeholder="Enter your occupation here">
+                            </div>
+                        </div>
+    
+                        <div *ngIf="ev==ex[3]">
+                            <!--Medium Entering-->
+                            <div class="form-group container_small">
+                                <label for="">Medium</label>
+                                <select name="medium" class="form-control" (change)="selectChangeMediam($event)"
+                                    [(ngModel)]='userModel.medium'>
+                                    <option value=''>Select One..</option>
+                                    <option value="sinhala">Sinhala</option>
+                                    <option value="tamil">Tamil</option>
+                                    <option value="english">English</option>
+                                </select>
+                            </div>
+    
+                            <!--occupation Entering-->
+                            <div class="form-group">
+                                <label for="">Occupation</label><br>
+                                <input type="text" class="form-control" id="" name="occupation"
+                                    placeholder="Enter your occupation here" #occupation="ngModel"
+                                    [(ngModel)]="userModel.occupation">
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)='onSubmit()' [disabled]="f.form.pristine || f.form.invalid">Submit</button>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </form>
+    </div>

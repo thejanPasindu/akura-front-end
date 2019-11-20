@@ -1,0 +1,20 @@
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close><i class="fas fa-times" style="color: red"></i></button>
+</mat-dialog-actions>
+
+<h1 mat-dialog-title>{{data.project_name}}</h1>
+<hr>
+
+<div mat-dialog-content>
+  <p><b>Type: </b>{{data.type}}</p>
+  <p><b>Start Date: </b>{{data.start_date}}</p>
+  <p><b>End Date: </b>{{data.end_date}}</p>
+  <p><b>Location: </b>{{data.location}}</p>
+  <p><b>City :</b>{{data.city}}</p>
+  <p><b>District :</b>{{data.district}}</p>
+  <div>
+    <label><b>Discription: </b></label><br>
+    <textarea rows="10" cols="100" disabled>{{data.description}}</textarea>
+  </div>
+</div>
+

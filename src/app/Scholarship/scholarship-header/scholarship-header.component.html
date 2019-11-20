@@ -1,0 +1,32 @@
+<div>
+  <div>
+    <nav mat-tab-nav-bar >
+        <a mat-tab-link routerLink="schApplyForm1" (click)="activeLink = links[0]" 
+        [active]="activeLink ==links[0]" *ngIf="(tab=='student')">{{links[0]}}</a>
+
+        <a mat-tab-link routerLink="upProgRepo" (click)="activeLink = links[1]" 
+        [active]="activeLink ==links[1]" *ngIf="(tab=='student')">{{links[1]}}</a>
+        
+        <a mat-tab-link routerLink="newSchList" (click)="activeLink = links[2]" 
+        [active]="activeLink ==links[2]" *ngIf="(tab=='admin')">{{links[2]}}</a>
+        
+        <a mat-tab-link routerLink="rjcSchs" (click)="activeLink = links[3]" 
+        [active]="activeLink ==links[3]" *ngIf="(tab=='admin')">{{links[3]}}</a>
+        
+        <a mat-tab-link routerLink="aprSchs" (click)="activeLink = links[4]" 
+        [active]="activeLink ==links[4]" *ngIf="(tab=='admin')">{{links[4]}}</a>
+
+        <a mat-tab-link routerLink="schSuggestion" (click)="activeLink = links[5]" 
+        [active]="activeLink ==links[5]" *ngIf="(tab=='sponsor')">{{links[5]}}</a>
+        
+        <a mat-tab-link routerLink="schExpReport" (click)="activeLink = links[6]" 
+        [active]="activeLink ==links[6]" *ngIf="(tab=='admin')">{{links[6]}}</a>
+
+        <a mat-tab-link routerLink="schSummary" (click)="activeLink = links[7]" 
+        [active]="activeLink ==links[7]" *ngIf="(tab=='admin')">{{links[7]}}</a>
+
+      </nav>
+  
+    <router-outlet></router-outlet>
+  </div>
+</div>

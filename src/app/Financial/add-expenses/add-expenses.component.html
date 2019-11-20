@@ -1,0 +1,101 @@
+<div>
+  <div class="alert alert-success">
+      <div style="margin:10px;">
+          <h2>Add Expense</h2>
+          <!--title-->
+          <form #gen="ngForm">
+
+              <!--Input Expense Amount-->
+              <div>
+                  <mat-form-field class="input-amount">
+                      <mat-label>Amount</mat-label>
+                      <input name="amount" autocomplete="off"  matInput
+                          placeholder="0000" [(ngModel)]="amount">
+                      <!-- <mat-error *ngIf="expenseamountFormControl.hasError('required')">Amount is Required
+                      </mat-error>
+                      <mat-error
+                          *ngIf="!expenseamountFormControl.hasError('required') && expenseamountFormControl.hasError('pattern')">
+                          You should enter amount value</mat-error> -->
+                  </mat-form-field>
+
+              </div>
+
+              <!---Input date-->
+              <div>
+                  <mat-form-field class="date">
+                      <mat-label>Date</mat-label>
+                      <input [max]="maxDate" name="date" matInput [matDatepicker]="picker"
+                          placeholder="Choose a date" [(ngModel)]="date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker startView="year"></mat-datepicker>
+                      <!-- <mat-error *ngIf="dateFormControl.hasError('required')">Date is Required</mat-error> -->
+                  </mat-form-field>
+              </div>
+
+
+              <!--Input Description-->
+              <div>
+                  <mat-form-field class="discription">
+                      <mat-label>Description</mat-label>
+                      <textarea matInput placeholder="Enter Description" name="description"
+                           [(ngModel)]="description" rows="4"></textarea>
+                      <!-- <mat-error *ngIf="descriptionFormControl.hasError('required')">Description is Required
+                      </mat-error> -->
+                  </mat-form-field>
+              </div>
+
+              <div class="form-group container_small">
+
+
+
+                  <!--Image upload-->
+                  <div class="image-upload">
+                      <div *ngIf="imagePath" class="outerPreview">
+                          <div *ngIf="imagePath != null" class="image-close-btn">
+                              <mat-icon (click)="cancelImage()">remove</mat-icon>
+                          </div>
+                          <img class="outerPreview" [src]="imgURL" *ngIf="imgURL">
+                      </div>
+                      <div *ngIf="!imagePath" class="outerPreview2">
+                          <img class="outerPreview2" src="../../assets/img/default.jpg">
+                      </div>
+
+                      <br>
+                      <!--image upload button-->
+                      <button class="image-upload-button" style="width:40%;" mat-raised-button (click)="file.click()">
+                          <mat-icon>add_photo_alternate</mat-icon>
+                          <label style="color:rgb(92, 90, 90)">Upload the Receipt</label>
+                      </button>
+                      <input style="display:none" #file type="file" accept='image/*' 
+                          (change)="preview(file.files)">
+                      
+                  </div>
+              </div>
+
+              <!--loading spinner-->
+              <div>
+                  <mat-progress-spinner style="left:40%;" *ngIf="isLoading" mode="indeterminate">
+                  </mat-progress-spinner>
+                  <!--success message-->
+                  <div *ngIf="successMsg"
+                      style="width: 100%;background-color: greenyellow;border-radius: 5px;padding: 2px;text-align: center;">
+                      Data has been inserted sucessfully
+
+                      <mat-icon aria-label="label">done</mat-icon>
+                  </div>
+              </div>
+
+              <div role="group" class="buttongroup" aria-label="First group">
+                  <!--Submit button-->
+                  <button class="submitbutton" color="primary" mat-raised-button
+                      
+                      (click)='submitExpenseForm()'>Submit</button>
+                  <!--Reset button-->
+                 <button  class="resetbutton"
+                      color="warn" mat-raised-button type="reset" value="Reset"> Reset
+                  </button> 
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

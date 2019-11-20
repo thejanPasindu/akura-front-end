@@ -1,0 +1,116 @@
+.input-amount{
+    width:50%;
+}
+.discription{
+    width:100%;
+}
+button.submitbutton{
+    width:30%;
+    margin-top: 50px;
+    margin-right:20px;
+    text-decoration:none;
+    background-color:transparent;
+    border-style: solid;
+    border-color: blue;
+    border-width: unset;
+    color: blue;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+button.submitbutton:hover{
+    background-color:rgb(66, 66, 255);
+    color:white;
+}
+button.resetbutton{
+    width:30%;
+    margin-top: 50px;
+    text-decoration:none;
+    background-color:transparent;
+    border-style: solid;
+    border-color: red;
+    border-width: unset;
+    color: red;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+button.resetbutton:hover {
+    background-color:rgb(255, 85, 85);
+    color:white;
+}
+.buttongroup{
+    margin-top: 10px;
+}
+.left-side{
+    width:44%;
+    margin-left:3%;
+    height: 530px;
+    background-color: rgb(248, 237, 223);
+}
+.right-side{
+    width:53%;
+    margin-bottom: 10px;
+}
+[class*="-side"]{
+    float:left;
+}
+.date{
+    width:46%;
+}
+.image{
+    margin-top: 20px;
+}
+.image-close-btn {
+    position: absolute;
+    z-index: 3;
+    top:5px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    height: 27px;
+    width: 27px;
+    padding: 1.4px;
+    margin-top: 7px;
+}
+.image-frame{
+    margin-top: 1%;
+    left:1%;
+    position: relative;
+    width:98%;
+    background-color: aqua;
+    border-style: solid ;
+}
+
+.outerPreview{
+
+    width: 100%;
+    background-color: rgb(248, 237, 223);
+    position: relative;
+
+}
+.outerPreview2{
+
+    width: 100%;
+    background-color: rgb(248, 237, 223);
+    position: relative;
+
+}
+
+div.alert{
+    width:60%;
+    left:20%;
+    right:20%;
+    border-style:solid; 
+    border-radius:10px; 
+    border-right: none;
+}
+
+.image-upload{
+    border-style:solid;
+    padding:10px;
+    border-width:1px;
+    border-radius:5px;
+}
+.image-upload-button{
+    position: relative;
+}
